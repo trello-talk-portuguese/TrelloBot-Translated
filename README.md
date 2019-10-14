@@ -30,6 +30,6 @@ Trello Brasil é o nome "oficial" do bot traduzido para o português. Esse repos
 
 - Porque não se tem informações para a hospedagem própria?
 
-Como dito, essa é um projeto paralelo ao Taco e até ele se tornar estável, este não será também. O bot atingirá a estabilidade após a versão 7.0 do Taco Bot e com isso, apenas após a versão 7 que será publicada as informações de "SelfHosting". Caso queira realmente hospedar mesmo considerando os riscos, entre em contato com Lobo Metalurgico#7237 no servidor de suporte ou Yamboy1#3959 no servidor de suporte original (Inglês).
+No momento, não adicionaremos instruções de hospedagem até a confirmação de estabilidade do bot por parte da equipe oficial do Taco Bot. No entanto, se você realmente precisar hospedar esse bot agora mesmo, poderá enviar uma mensagem para Lobo Metalurgico#7237 no servidor de suporte brasil ou para Yamboy1#3959 ou Coolguy3289#2290 no servidor de suporte oficial em inglês para que ajudem a configurá-lo. Observe que até a versão 7.0.0 ser lançada, este bot estará na versão beta e muitas coisas poderão mudar, portanto, verifique as changelogs antes de atualizar seu bot para uma nova versão.
 
 *Trello, Taco The Husky e a logo do Trello são marcas registradas da Trello, Inc. e não estão associadas a este projeto*
