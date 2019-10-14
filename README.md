@@ -1,4 +1,4 @@
-# Trello Bot (Taco)
+# Trello Bot (Trello Brasil)
 
 <a href="https://top.gg/bot/620126394390675466">
   <img src="https://top.gg/api/widget/620126394390675466.svg" alt="Taco" align="right"/>
@@ -6,9 +6,10 @@
 
 ![Discord Shield](https://discordapp.com/api/guilds/617911034555924502/widget.png?style=shield) [![Discord Bots](https://top.gg/api/widget/servers/620126394390675466.svg?rightcolor=7289DA)](https://top.gg/bot/620126394390675466) [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-## Introduction
+## Introdução
 
-The Trello Bot Is Back! [[Invite here](https://trellobot.xyz/bot)] [[Support Server](https://trellobot.xyz/server)]
+
+O trello bot agora está em português! [[Convite (Em Breve)](/#)] [[Servidor de Suporte (Em Breve)](/#)]
 
 - Manage Your Trello Boards, See Board Activity, Manage Your Webhooks, Use Multiple Boards Per Server, And More!
 - Simple Web-based Authentication To Get You Started As Soon As Possible!
