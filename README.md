@@ -9,27 +9,27 @@
 ## Introdução
 
 
-O trello bot agora está em português! [[Convite (Em Breve)](/#)] [[Servidor de Suporte (Em Breve)](/#)]
+O trello bot agora está em português! [[Convite (Em Breve)](/#)] [[Servidor de Suporte (Em Breve)](/#)] [[Servidor de Suporte Original(inglês)](https://trellobot.xys/server)]
 
 - Manage Your Trello Boards, See Board Activity, Manage Your Webhooks, Use Multiple Boards Per Server, And More!
 - Simple Web-based Authentication To Get You Started As Soon As Possible!
 - Friendly Support Staff Available To Assist With Any Issues You May Encounter!
 
 ## Selfhosting
-Coming soon™
+Em breve™
 
 
 ## FAQs
-- What happened to the original Trello Bot?
+- O que aconteceu com o bot original? E seu substituto "Taco"?
 
-The original Trello Bot (Trello#5300) has now been shutdown. This is the continuation of that project.
+O trello bot original (Trello#5300) foi encerrado e o Taco Bot ainda está ativo e esta é apenas uma edição paralela a ele e de mesma base porém traduzido.
 
 - Why is the bot called Taco, but the repository is called TrelloBot
 
 Taco is the name of our "official" hosted copy. This repository is the code used for the bot and can be used to selfhost TrelloBot yourself.
 
-- Why are there no selfhosting instructions yet?
+- Porque não se tem informações para a hospedagem própria?
 
-We're currently not going to add selfhosting instructions until we're sure that the bot is stable. However, if you really need to selfhost this bot now, you can message Yamboy1#3959 or Coolguy3289#2290 on the Support Server, and they can help you set it up. Please note that until version 7.0.0 is released, this bot is currently in beta and lots of things are still likely to change, so please check the changelogs before updating your bot to a new version.
+Como dito, essa é um projeto paralelo ao Taco e até ele se tornar estável, este não será também. O bot atingirá a estabilidade após a versão 7.0 do Taco Bot e com isso, apenas após a versão 7 que será publicada as informações de "SelfHosting". Caso queira realmente hospedar mesmo considerando os riscos, entre em contato com Lobo Metalurgico#7237 no servidor de suporte ou Yamboy1#3959 no servidor de suporte original (Inglês).
 
 *Trello, Taco The Husky and the Trello Logo are trademarks of Trello, Inc. and are not assosiated with this project*
