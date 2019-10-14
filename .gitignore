@@ -58,6 +58,7 @@ typings/
 .env
 
 # TrelloBot
+start.bat
 Config/
 
 # Webstorm/Jetbrains config
