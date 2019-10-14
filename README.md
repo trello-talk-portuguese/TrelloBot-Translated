@@ -1,10 +1,10 @@
 # Trello Bot (Chorizo)
 
-<a href="https://top.gg/bot/631903417471598602">
-  <img src="https://top.gg/api/widget/631903417471598602.svg" alt="Chorizo" align="right"/>
+<a href="https://top.gg/bot/620126394390675466">
+  <img src="https://top.gg/api/widget/620126394390675466.svg" alt="Chorizo" align="right"/>
 </a>
 
-![Discord Shield](https://discordapp.com/api/guilds/617911034555924502/widget.png?style=shield) [![Discord Bots](https://top.gg/api/widget/servers/631903417471598602.svg?rightcolor=7289DA)](https://top.gg/bot/631903417471598602) [![Licença: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+![Discord Shield](https://discordapp.com/api/guilds/617911034555924502/widget.png?style=shield) [![Discord Bots](https://top.gg/api/widget/servers/620126394390675466.svg?rightcolor=7289DA)](https://top.gg/bot/620126394390675466) [![Licença: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 ## Introdução
 
@@ -22,7 +22,7 @@ Em breve™
 ## FAQs
 - O que aconteceu com o bot original? E seu substituto "Taco"?
 
-O trello bot original (Trello#5300) foi encerrado e o Taco Bot ainda está ativo e esta é apenas uma edição paralela a ele e de mesma base porém traduzido.
+O trello bot original (Trello#5300) foi encerrado e o Taco Bot ainda está ativo. Esta é apenas uma ramificação dele porém traduzido.
 
 - Porque o bot se chama "Chorizo" mas o repositório se chama TrelloBot-Translated?
 
