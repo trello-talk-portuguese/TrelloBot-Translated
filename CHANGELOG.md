@@ -2,6 +2,8 @@
 
 ## 6.6.1
 - Apresentando a versão brasileira do bot!
+- Agora o bot informa o prefixo caso seja mencionado e não haja um comando junto! :)
+- Minors Bugs Fixed
 
 ## 6.6.0
 - Fix emoji fallback in `info` command
