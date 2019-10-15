@@ -13,6 +13,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
+ 
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
@@ -27,14 +28,14 @@ module.exports = class Donate extends Command {
 
   exec(message) {
     if(!(Array.isArray(this.client.config.donate) && this.client.config.donate[0]))
-      return message.channel.send("The bot owner hasn't supplied a donate link!");
-    message.channel.send(`Support development by donating!\n${this.client.util.linkList(this.client.config.donate)}`);
+      return message.channel.send("O dono do bot não preencheu com um link para doação :(");
+    message.channel.send(`Suporte o desenvolvedor doando com um desses links :)\n${this.client.util.linkList(this.client.config.donate)}`);
   }
 
   get helpMeta() {
     return {
-      category: "General",
-      description: "Get the donation links for the developer."
+      category: "Geral",
+      description: "Obtém um link de doação para o desenvolvedor. (Use esse comando se quiser deixar um desenvolvedor feliz)"
     };
   }
 };

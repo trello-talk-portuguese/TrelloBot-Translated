@@ -13,6 +13,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
+ 
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
@@ -26,8 +27,8 @@ module.exports = class ClearAuth extends Command {
   async exec(message, args, { user }) {
     const userId = message.author.id;
     const currentAuth = await this.client.data.get.user(userId);
-    if (currentAuth === null) return message.reply('Your account is not currently authorized with Trello!');
-    await message.channel.send('Are you sure you would like to clear your authorization? You will need to reauthorize again to use trello commands. (Type `yes` to continue)');
+    if (currentAuth === null) return message.reply('Sua conta não está autenticada com o trello!');
+    await message.channel.send('Você tem certeza de que deseja desautenticar? Você precisará reautenticar para voltar a utilizar os comandos do Trello. (Digite `sim` para confirmar)');
 
     const filter = m => m.author.id === userId;
     const messages = await message.channel.awaitMessages(filter, {
@@ -35,18 +36,18 @@ module.exports = class ClearAuth extends Command {
       time: 30000,
     });
 
-    if (!messages.size || messages.first().content.toLowerCase() !== 'yes') {
-      return message.channel.send('Cancelled!');
+    if (!messages.size || messages.first().content.toLowerCase() !== 'sim') {
+      return message.channel.send('Cancelado!');
     }
 
     await this.client.data.delete.user(userId);
-    await message.channel.send('Auth cleared!');
+    await message.channel.send('Autenticação removida!');
   }
 
   get helpMeta() {
     return {
-      category: 'General',
-      description: 'Clears your Trello authorization. If you don\'t know what this means, please don\'t run this command.'
+      category: 'Geral',
+      description: 'Limpa sua autenticação com o trello. Se você \'não souber o que está fazendo, não\' execute esse comando.'
     };
   }
 };

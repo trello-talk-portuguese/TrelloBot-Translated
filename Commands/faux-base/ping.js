@@ -13,6 +13,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
+ 
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
@@ -40,16 +41,16 @@ module.exports = class Ping extends Command {
       embed: {
         color: 0xf7b300,
         title: "Pong!",
-        description: `**Message recieve delay**: ${messageRecvTime}ms\n` +
-          `**Message update delay**: ${messageUpdTime}ms\n` +
-          `**WebSocket ping**: ${Math.round(this.client.ping)}ms`
+        description: `**Tempo de recebimento**: ${messageRecvTime}ms\n` +
+          `**Tempo de atualização**: ${messageUpdTime}ms\n` +
+          `**Ping do WebSocket**: ${Math.round(this.client.ping)}ms`
       }
     });
   }
 
   get helpMeta() {
     return {
-      category: "General",
+      category: "Geral",
       description: "Pong!"
     };
   }

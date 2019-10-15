@@ -13,6 +13,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
+ 
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
@@ -26,13 +27,13 @@ module.exports = class Invite extends Command {
   get cooldown() { return 0; }
 
   exec(message) {
-    message.channel.send(`Invite me with any of these links!\n${this.client.util.linkList(this.client.config.invites)}`);
+    message.channel.send(`Me convide com qualquer um destes links!\n${this.client.util.linkList(this.client.config.invites)}`);
   }
 
   get helpMeta() {
     return {
-      category: "General",
-      description: "Gets the bot invite link."
+      category: "Geral",
+      description: "Obtém um link para convidar o bot."
     };
   }
 };

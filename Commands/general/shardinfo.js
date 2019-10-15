@@ -13,6 +13,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
+ 
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
@@ -35,7 +36,7 @@ module.exports = class ShardInfo extends Command {
   get cooldown() { return 2; }
   async exec(message, args) {
     if (!this.client.isSharded())
-      return message.channel.send("The bot is currently not sharded.");
+      return message.channel.send("O bot não está em um shard atualmente.");
 
     let sharddata = await this.client.shard.broadcastEval(broadcastString);
     let totalMB = sharddata.reduce((prev, val) => prev + val[4], 0).toFixed(2) + " MB";
@@ -59,8 +60,8 @@ module.exports = class ShardInfo extends Command {
 
   get helpMeta() {
     return {
-      category: "General",
-      description: "Gives the stats for every shard."
+      category: "Geral",
+      description: "Obtém a informação de todos os shards."
     };
   }
 };

@@ -13,6 +13,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
+
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
@@ -25,13 +26,13 @@ module.exports = class ServerInvite extends Command {
   get cooldown() { return 0; }
   get aliases() { return ["support", "supportserver"]; }
   exec(message) {
-    message.channel.send(`Join the support server with any of these links!\n${this.client.util.linkList(this.client.config.supportServers)}`);
+    message.channel.send(`Entre no servidor de suporte por um desses links!\n${this.client.util.linkList(this.client.config.supportServers)}`);
   }
 
   get helpMeta() {
     return {
-      category: "General",
-      description: "Get the invite for the support server."
+      category: "Geral",
+      description: "Obtém um link para o servidor de suporte."
     };
   }
 };

@@ -13,6 +13,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
+
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
@@ -20,8 +21,11 @@
 
 
 const Util = require("./Util");
+const config = require("../Config/")
+
 
 module.exports = class EventHandler {
+  
   constructor(client) {
     this.client = client;
     client.on("message", this.onMessage.bind(this));
@@ -30,11 +34,15 @@ module.exports = class EventHandler {
     client.on("guildMemberAdd", this.onMemberJoin.bind(this));
   }
 
+  
+
   async onMessage(Message) {
+
     this.client.stats.bumpStat("messages");
     if (Message.author.bot) return;
     if (Message.channel.type !== "dm" && !Message.channel.permissionsFor(this.client.user).has("SEND_MESSAGES")) return;
     if (Message.channel.type === "dm") return Message.reply("Não trabalho com mensagens privadas. Apenas os outros bots do lobo.");
+    if (Message.content == `<@${this.client.user.id}>` || Message.content == `<@!${this.client.user.id}>` ) return Message.reply(`Caso não saiba, meu prefixo é \`${config.prefix}\`.`)
 
     if (this.client.awaitedMessages.hasOwnProperty(Message.channel.id)
       && this.client.awaitedMessages[Message.channel.id].hasOwnProperty(Message.author.id)) {
@@ -59,8 +67,8 @@ module.exports = class EventHandler {
         if (command.permissions.includes("embed") && !this.client.embed(Message)) return Message.reply("Eu preciso da permissão `Embed Links` para usar esse comando!");
         if (command.permissions.includes("elevated") && !this.client.elevated(Message)) return Message.reply("Apenas usuários com cargo superior ao meu podem usar este comando!");
         if (command.permissions.includes("trello-perm") && !this.client.util.checkPerm(Message.author, Message.channel.guild)) return Message.reply("Para esse comando você precisa ser o dono do server ou usar o cargo com nome de `Trello`!");
-        if (command.permissions.includes("auth") && user === null) return Message.reply(`Você não sincronizou sua conta do discord com o trello! Por favor, sincronize aqui: ${this.client.config.authURL} (To do list?)`);
-        if (command.permissions.includes("board") && (user === null || user.current === null)) return Message.reply(`Nenhuma board selecionada. Use \`${this.client.config.prefix}switch\` para selecionar.`);
+        if (command.permissions.includes("auth") && user === null) return Message.reply(`Você não sincronizou sua conta do discord com o trello! Por favor, sincronize aqui: ${this.client.config.authURL}`);
+        if (command.permissions.includes("board") && (user === null || user.current === null)) return Message.reply(`Nenhum quadro selecionado. Use \`${this.client.config.prefix}switch\` para selecionar.`);
         this.client.stats.bumpStat("commands");
         this.client.stats.bumpCommandStat(command.name);
         try {

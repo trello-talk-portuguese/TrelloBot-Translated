@@ -13,6 +13,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
+
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
@@ -57,7 +58,7 @@ module.exports = class Faux extends Discord.Client {
     this.on("ready", () => {
       this.log(chalk.green("Logged in"));
       this.user.setStatus('dnd')
-      this.user.setActivity("Em testes... | " + this.config.prefix + "help", { type: 3 });
+      this.user.setActivity("Quadros mostrados no discord por mim | " + this.config.prefix + "help", { type: 3 });
     });
     this.on("warn", s => this.warn("WARN", s));
     this.on("error", s => this.error("ERROR", s));

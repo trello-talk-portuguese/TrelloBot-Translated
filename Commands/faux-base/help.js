@@ -13,6 +13,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
+ 
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
@@ -31,7 +32,7 @@ module.exports = class Help extends Command {
       let command = this.client.cmds.get(args[0]);
       if (!command) return;
       let { usage = undefined } = command.helpMeta;
-      if (!command) message.reply(`Camndo ${args[0]} não encontrado.`); else {
+      if (!command) message.reply(`Comando ${args[0]} não encontrado.`); else {
         let embed = {
           title: `${prefix}${command.name}`,
           color: this.client.config.embedColor,
@@ -41,7 +42,7 @@ module.exports = class Help extends Command {
               value: usage ? usage.reduce((acc, x) => `${acc}\n${prefix}${command.name} \`${x}\``, "") : prefix + command.name
             },
             //{name: "Usage", value: `${prefix}${command.name}${command.helpMeta.usage ? ` \`${command.helpMeta.usage}\`` : ''}`},
-            { name: "Cooldown", value: `${command.cooldown} seconds`, inline: true }
+            { name: "Cooldown", value: `${command.cooldown} segundos`, inline: true }
           ],
           description: command.helpMeta.description
         };
@@ -66,7 +67,7 @@ module.exports = class Help extends Command {
     } else {
       let embed = {
         color: this.client.config.embedColor,
-        description: `${this.client.user.username} (Executando [Faux](https://github.com/Snazzah/Faux) By Snazzah)\nServidor de Suporte: ${this.client.config.supportServers[0]}`,
+        description: `${this.client.user.username} (Executando [Faux](https://github.com/Snazzah/Faux) criado por Snazzah)\nServidor de Suporte: ${this.client.config.supportServers[0]}`,
         footer: {
           text: `Use \`${prefix}help [comando]\` para mais informações`
         },
@@ -93,7 +94,7 @@ module.exports = class Help extends Command {
 
   get helpMeta() {
     return {
-      category: "General",
+      category: "Geral",
       description: "Mostra a mensagem de ajuda e exibe mais informações sobre os comandos",
       usage: ["[comando]"]
     };

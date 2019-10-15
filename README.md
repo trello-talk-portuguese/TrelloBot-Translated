@@ -22,7 +22,7 @@ Em breve™
 ## FAQs
 - O que aconteceu com o bot original? E seu substituto "Taco"?
 
-O trello bot original (Trello#5300) foi encerrado e o Taco Bot ainda está ativo. Esta é apenas uma ramificação dele porém traduzido.
+O trello bot original (Trello#5300) foi encerrado e o Taco Bot (Taco#0086) ainda está ativo. Esta é apenas uma ramificação dele porém traduzido.
 
 - Porque o bot se chama "Chorizo" mas o repositório se chama TrelloBot-Translated?
 

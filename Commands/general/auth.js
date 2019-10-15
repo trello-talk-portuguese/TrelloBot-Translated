@@ -13,6 +13,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
+ 
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
@@ -24,13 +25,13 @@ module.exports = class Auth extends Command {
   get cooldown() { return 0; }
 
   exec(message) {
-    return message.channel.send(`Authorize your Trello account with your Discord here: **<${this.client.config.authURL}>**`);
+    return message.channel.send(`Sincronize sua conta do discord com o trello aqui: **<${this.client.config.authURL}>**`);
   }
 
   get helpMeta() {
     return {
-      category: "General",
-      description: "Get the auth link."
+      category: "Geral",
+      description: "Obtém o link de sincronização discord - trello."
     };
   }
 };
