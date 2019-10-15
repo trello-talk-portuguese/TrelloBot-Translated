@@ -13,6 +13,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
+
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
@@ -39,26 +40,26 @@ module.exports = class RemoveCard extends Command {
     });
     if (bid !== undefined) {
       try {
-        await message.reply(`Are you sure you want to delete the card "${bid.name}"? Type \`yes\` to confirm, anything else will cancel the deletion.`);
+        await message.reply(`Você tem certeza que quer deletar o cartão "${bid.name}"? Digite \`sim\` para confirmar. Qualquer outra coisa irá cancelar essa ação.`);
         let nextMessage = await this.client.awaitMessage(message);
         if (nextMessage.content == "yes") {
           await this.client.trello.delete.card(user.trelloToken, args[0]);
-          message.reply(`Deleted card "${bid.name}". \`(${args[0]})\``);
+          message.reply(`Cartão "${bid.name}" foi deletado com sucesso. \`(${args[0]})\``);
         } else {
-          await message.channel.send("Cancelled confirmation.");
+          await message.channel.send("Confirmação cancelada.");
         }
       } catch (e) {
-        await message.channel.send("Cancelled confirmation due to an interruption.");
+        await message.channel.send("Abortado por uma interrupção.");
       }
     } else {
-      message.reply("Uh-Oh! Either that card ID is non-existent or it's not on the selected board!");
+      message.reply("Oops! Este cartão não existe ou não está no quadro selecionado.");
     }
   }
 
   get helpMeta() {
     return {
-      category: "Editing",
-      description: "Removes a card from the board.",
+      category: "Edição",
+      description: "Remove o cartão de um quadro.",
       usage: ["<cardID>"]
     };
   }

@@ -13,6 +13,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
+
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
@@ -39,16 +40,16 @@ module.exports = class OpenList extends Command {
     let result = query.result;
     if (result !== null) {
       await this.client.trello.set.list.closed(user.trelloToken, result.id, false);
-      message.reply(`Removed list "${result.name}" from the archive.`);
+      message.reply(`Lista "${result.name}" removida dos arquivos.`);
     } else {
-      message.reply(`No list by the name of "${listName}" was found!`);
+      message.reply(`A lista "${listName}" não foi foi encontrada!`);
     }
   }
 
   get helpMeta() {
     return {
-      category: "Editing",
-      description: "Removes a list from the archive.",
+      category: "Edição",
+      description: "remove uma lista dos arquivos.",
       usage: ["<listName>"]
     };
   }

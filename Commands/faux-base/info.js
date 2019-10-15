@@ -39,7 +39,7 @@ module.exports = class Info extends Command {
       color: this.client.config.embedColor,
       title: `Informações sobre ${this.client.user.username}.`,
       description: "Este bot está usando usa [Faux](https://github.com/Snazzah/Faux)\n\n"
-        + `**:computer: ${this.client.user.username} Versão** ${this.client.pkg.version}\n`
+        + `**:computer: Versão do ${this.client.user.username}** ${this.client.pkg.version}\n`
         + `**:computer: Versão do Faux** ${this.client.FAUX_VER}\n`
         + `**:clock: Uptime**: ${process.uptime() ? process.uptime().toString().toHHMMSS() : "???"}\n`
         + `**:gear: Uso de memória**: ${(process.memoryUsage().heapUsed / 1000000).toFixed(2)} MB\n`
@@ -57,7 +57,7 @@ module.exports = class Info extends Command {
   get helpMeta() {
     return {
       category: "Geral",
-      description: "Verifica as informações gerais do bot."
+      description: "Mostra as informações gerais do bot."
     };
   }
 };

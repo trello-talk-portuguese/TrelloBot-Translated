@@ -13,6 +13,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
+
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
@@ -39,16 +40,16 @@ module.exports = class RenameCard extends Command {
     });
     if (bid !== undefined) {
       await this.client.trello.set.card.name(user.trelloToken, args[0], args.slice(1).join(" "));
-      message.reply(`Renamed card "${bid.name}" \`(${args[0]})\` to "${args.slice(1).join(" ")}".`);
+      message.reply(`O Cartão "${bid.name}" foi renomeado \`(${args[0]})\` para "${args.slice(1).join(" ")}".`);
     } else {
-      message.reply("Uh-Oh! Either that card ID is non-existent or it's not on the selected board!");
+      message.reply("Oops! Este cartão não existe ou não está no quadro selecionado.");
     }
   }
 
   get helpMeta() {
     return {
-      category: "Editing",
-      description: "Renames a card.",
+      category: "Edição",
+      description: "Renomeia um cartão.",
       usage: ["<cardID> <name>"]
     };
   }

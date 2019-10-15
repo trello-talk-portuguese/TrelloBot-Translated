@@ -13,6 +13,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
+
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
@@ -28,16 +29,16 @@ module.exports = class Lists extends Command {
   async exec(message, args, { user }) {
     let body = await this.client.trello.get.lists(user.trelloToken, user.current);
     if (!body.length)
-      return message.reply("There are no found lists on the board. Check the archive with `T!listarchive`.");
+      return message.reply("Não foram encontradaslistas no quadro. Verifique as arquivadas usando `" + this.client.config.prefix +"listarchive`.");
     await this.client.promptList(message, body, (list, embed) => {
       let emojis = (list.subscribed ? "🔔" : "");
       if (embed)
-        return `${list.name} ${emojis} *(${list.cards.length} Cards)*`;
-      else return `${list.name} ${emojis} (${list.cards.length} Cards)`;
+        return `${list.name} ${emojis} *(${list.cards.length} Cartões)*`;
+      else return `${list.name} ${emojis} (${list.cards.length} Cartões)`;
     }, {
-      header: "Use `" + this.client.config.prefix + "viewlist <listName>` to see all cards in that list\n" +
-        "Use `" + this.client.config.prefix + "lists [page]` to iterate this list",
-      pluralName: "Trello Lists",
+      header: "Use `" + this.client.config.prefix + "viewlist <listName>` para ver todos os cartões numa lista\n" +
+        "Use `" + this.client.config.prefix + "lists [página]` para ver as listas",
+      pluralName: "Listas do Trello",
       itemsPerPage: 15,
       startPage: args[0]
     });
@@ -45,9 +46,9 @@ module.exports = class Lists extends Command {
 
   get helpMeta() {
     return {
-      category: "Viewing",
-      description: "Lists all the lists in the current board.",
-      usage: ["[page]"]
+      category: "Visualização",
+      description: "Lista todos as listas no quadro selecionado.",
+      usage: ["[página]"]
     };
   }
 };

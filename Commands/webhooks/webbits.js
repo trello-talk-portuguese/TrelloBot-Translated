@@ -13,6 +13,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
+ 
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
@@ -33,7 +34,7 @@ module.exports = class WebBits extends Command {
       }
     }, {
       header: "Use esses bits para configurar seus webhooks usando `" + this.client.config.prefix + "editwebhook`\n" +
-        "Use `" + this.client.config.prefix + "webbits [page]` para ver a lista",
+        "Use `" + this.client.config.prefix + "webbits [página]` para ver a lista",
       pluralName: "Trello Webhook Bits",
       itemsPerPage: 10,
       startPage: args[0]
@@ -43,8 +44,8 @@ module.exports = class WebBits extends Command {
   get helpMeta() {
     return {
       category: "Webhooks",
-      description: "Lista webhook bits.",
-      usage: ["[page]"]
+      description: "Lista os bits dos webhooks.",
+      usage: ["[página]"]
     };
   }
 };

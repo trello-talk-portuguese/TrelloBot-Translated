@@ -13,6 +13,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
+
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
@@ -29,7 +30,7 @@ module.exports = class RenameList extends Command {
   async exec(message, args, { user }) {
     let body = await this.client.trello.get.lists(user.trelloToken, user.current);
     if (!args.join(" ").match(/\s\|\s/, "|")) {
-      message.channel.send(`Format is invalid!`);
+      message.channel.send(`Formato inválido`);
       return;
     }
     let c = args.join(" ").replace(/\s\|\s/, "|").split("|");
@@ -38,24 +39,24 @@ module.exports = class RenameList extends Command {
     let query = await this.client.util.query(
       message, body,
       oldName,
-      "name", item => `${item.name} (${item.cards.length} Cards)`,
-      "Type the number of the list you want to rename."
+      "name", item => `${item.name} (${item.cards.length} Cartões)`,
+      "Digite o número da lista que deseja renomear."
     );
     if (query.quit) return;
     let result = query.result;
     if (result !== null) {
       if (result.name !== newName)
         await this.client.trello.set.list.name(user.trelloToken, result.id, newName);
-      message.reply(`Renamed list "${result.name}" to "${newName}".`);
+      message.reply(`A lista foi renomeado de "${result.name}" para "${newName}".`);
     } else {
-      message.reply(`No list by the name of "${oldName}" was found!`);
+      message.reply(`Nenhuma lista com o nome "${oldName}" foi encontrada!`);
     }
   }
 
   get helpMeta() {
     return {
-      category: "Editing",
-      description: "Renames a list.",
+      category: "Edição",
+      description: "Renomeia uma lista.",
       usage: ["<oldName> | <newName>"]
     };
   }

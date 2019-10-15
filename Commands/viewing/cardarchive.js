@@ -13,6 +13,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
+ 
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
@@ -29,15 +30,15 @@ module.exports = class CardArchive extends Command {
   async exec(message, args, { user }) {
     let body = await this.client.trello.get.cardsArchived(user.trelloToken, user.current);
     if (!body.length)
-      return message.reply("There are no found cards in the archive.");
+      return message.reply("Não Foram encontrados cartões arquivados.");
     await this.client.promptList(message, body, (card, embed) => {
       if (embed)
         return `\`${card.shortLink}\` ${card.name}`;
       else return `${card.shortLink}: ${card.name}`;
     }, {
-      header: "Use `" + this.client.config.prefix + "opencard <cardID>` to unarchive that card\n" +
-        "Use `" + this.client.config.prefix + "cardarchive [page]` to iterate this list",
-      pluralName: "Trello Archived Cards",
+      header: "Use `" + this.client.config.prefix + "opencard <cardID>` para desarquivar o cartão\n" +
+        "Use `" + this.client.config.prefix + "cardarchive [página]` para ver a lista de cartões arquivados",
+      pluralName: "Cartões arquivados no Trello",
       itemsPerPage: 15,
       startPage: args[0]
     });
@@ -45,9 +46,9 @@ module.exports = class CardArchive extends Command {
 
   get helpMeta() {
     return {
-      category: "Viewing",
-      description: "Lists all the archived cards in the current board.",
-      usage: ["[page]"]
+      category: "Visualização",
+      description: "Lista todos os cartões arquivados do quadro selecionado.",
+      usage: ["[página]"]
     };
   }
 };

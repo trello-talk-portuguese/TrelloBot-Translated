@@ -13,6 +13,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
+
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
@@ -49,15 +50,15 @@ module.exports = class Webhooks extends Command {
         startPage: args[0]
       });
     } else {
-      message.reply("Não foi possível encontrar nenhum webhook ativo. `" + this.client.config.prefix + "help addwebhook` para saber como criar um.");
+      message.reply("Não foi possível encontrar nenhum webhook ativo. Use `" + this.client.config.prefix + "help addwebhook` para saber como criar um.");
     }
   }
 
   get helpMeta() {
     return {
       category: "Webhooks",
-      description: "Lista os bits dos webhooks.",
-      usage: ["[page]"]
+      description: "Lista os quadros e bits dos webhooks.",
+      usage: ["[página]"]
     };
   }
 };

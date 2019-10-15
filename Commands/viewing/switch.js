@@ -13,6 +13,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
+
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
@@ -29,18 +30,18 @@ module.exports = class Switch extends Command {
   async exec(message, args, { user }) {
     let boards = await this.client.trello.get.boards(user.trelloToken, user.trelloID);
     if (!boards.boards.map(b => b.shortLink).includes(args[0])) {
-      message.channel.send("You don't have access to that board!");
+      message.channel.send("Você não tem acesso a esse quadro!");
     } else {
       await this.client.data.set.user(message.author.id, { current: args[0] });
       let board = boards.boards.filter(b => b.shortLink === args[0]);
-      message.channel.send(`Switched board to "${board[0].name}" \`(${args[0]})\``);
+      message.channel.send(`Alterne entre os quadros usando "${board[0].name}" \`(${args[0]})\``);
     }
   }
 
   get helpMeta() {
     return {
-      category: "Viewing",
-      description: "Selects the board. View boards with the `boards` command.",
+      category: "Visualização",
+      description: "Seleciona um quadro. Veja todos os quadros em que faz parte usando " + this.client.config.prefix + "`boards`.",
       usage: ["<boardID>"]
     };
   }

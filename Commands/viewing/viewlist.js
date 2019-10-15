@@ -13,6 +13,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
+
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
@@ -39,23 +40,23 @@ module.exports = class ViewList extends Command {
     }
     let body = await this.client.trello.get.lists(user.trelloToken, user.current);
     if (!body.length)
-      return message.reply("There are no found lists on the board. Check the archive with `T!listarchive`.");
+      return message.reply("Não foram encontradas listas no quadro. Verifique o arquivo com `" + this.client.config.prefix + "listarchive`.");
     let query = await this.client.util.query(
       message, body,
       listName,
-      "name", item => `${item.name} (${item.cards.length} Cards)`,
-      "Type the number of the list you want to view."
+      "name", item => `${item.name} (${item.cards.length} Cartões)`,
+      "Digite o número da lista que deseja ver."
     );
     if (query.quit) return;
     let result = query.result;
     if (result !== null) {
       if (!result.cards.length) {
-        message.reply("There were no found cards on that lists. You could check the archive with `T!cardarchive` or create one with `T!createcard`.");
+        message.reply("Não foram encontrados cartões nesta lista. Você pode verificar os arquivos usando `" + this.client.config.prefix + "cardarchive` ou criar um cartão usando `" + this.client.config.prefix + "createcard`.");
       } else {
         await this.client.promptList(message, result.cards, (card, embed) => {
           let emojis = (card.subscribed ? "🔔" : "");
           if (embed)
-            return `\`${card.shortLink}\` ${card.name} ${emojis} ${card.labels.map(label => `**\`${label.name || "Unnamed Label"}}  (${label.color || "No Color"})\`**`).join(" ")}`;
+            return `\`${card.shortLink}\` ${card.name} ${emojis} ${card.labels.map(label => `**\`${label.name || "Etiqueta não nomeada"}}  (${label.color || "Sem Cor"})\`**`).join(" ")}`;
           else {
             let l = "";
             if (card.labels.length)
@@ -63,21 +64,21 @@ module.exports = class ViewList extends Command {
             return `${card.shortLink}: ${card.name} ${emojis} ${l}`;
           }
         }, {
-          header: "Use `" + this.client.config.prefix + "card <cardID>` to see card information\n" +
-            "Use `" + this.client.config.prefix + "viewlist " + result.name + " [page]` to iterate this list",
-          pluralName: "Trello Lists",
+          header: "Use `" + this.client.config.prefix + "card <cardID>` para ver as informações de um cartão\n" +
+            "Use `" + this.client.config.prefix + "viewlist " + result.name + " [página]` para ver a lista de cartões",
+          pluralName: "Listas do Trello",
           itemsPerPage: 10,
           startPage: args[0]
         });
       }
-    } else message.reply("Uh-Oh! Either that list is non-existent or it's not on the selected board!");
+    } else message.reply("");
   }
 
   get helpMeta() {
     return {
-      category: "Viewing",
-      description: "Lists all cards in that list.",
-      usage: ["<listName> [page]"]
+      category: "Visualização",
+      description: "Lista todos os cartões de uma lista.",
+      usage: ["<listName> [página]"]
     };
   }
 };

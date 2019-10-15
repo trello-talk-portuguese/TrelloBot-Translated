@@ -13,6 +13,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
+
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
@@ -29,11 +30,11 @@ module.exports = class ListArchive extends Command {
   async exec(message, args, { user }) {
     let body = await this.client.trello.get.listsArchived(user.trelloToken, user.current);
     if (!body.length)
-      return message.reply("There are no found cards in the archive.");
+      return message.reply("Não foram encontradas listas arquivadas.");
     await this.client.promptList(message, body, list => list.name, {
-      header: "Use `" + this.client.config.prefix + "openlist <listName>` to unarchive that list\n" +
-        "Use `" + this.client.config.prefix + "listarchive [page]` to iterate this list",
-      pluralName: "Trello Archived Lists",
+      header: "Use `" + this.client.config.prefix + "openlist <listName>` para desarquivar uma lista\n" +
+        "Use `" + this.client.config.prefix + "listarchive [página]` para ver a lista",
+      pluralName: "Listas arquivadas no Trello",
       itemsPerPage: 15,
       startPage: args[0]
     });
@@ -41,9 +42,9 @@ module.exports = class ListArchive extends Command {
 
   get helpMeta() {
     return {
-      category: "Viewing",
-      description: "Lists all the archived lists in the current board.",
-      usage: ["[page]"]
+      category: "Visualização",
+      description: "Lista todos os cartões arquivados num quadro.",
+      usage: ["[página]"]
     };
   }
 };
