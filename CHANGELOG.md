@@ -1,5 +1,8 @@
 # CHANGELOG.md
 
+## 6.6.1
+- Apresentando a versão brasileira do bot!
+
 ## 6.6.0
 - Fix emoji fallback in `info` command
 - Fix some typos

@@ -1,6 +1,6 @@
 {
   "name": "trello-bot",
-  "version": "6.6.0",
+  "version": "6.6.1",
   "description": "Manage Trello boards in Discord",
   "main": "index.js",
   "scripts": {
@@ -9,11 +9,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Trello-Bot-Community/TrelloBot.git"
+    "url": "https://github.com/Trello-Bot-Portuguese/TrelloBot-Translated.git"
   },
-  "author": "Yamboy1",
+  "author": "Lobo Metalurgico",
   "contributors": [
-    "Snazzah"
+    "Snazzah", "Yamboy1"
   ],
   "license": "GPL-3.0",
   "dependencies": {
