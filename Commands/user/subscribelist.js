@@ -13,6 +13,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
+
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
@@ -33,24 +34,24 @@ module.exports = class SubscribeList extends Command {
     let query = await this.client.util.query(
       message, body,
       listName,
-      "name", item => `${item.name} (${item.cards.length} Cards)`,
-      "Type the number of the list you want to (un)subscribe to."
+      "name", item => `${item.name} (${item.cards.length} Cartões)`,
+      "Digite o número da lista em que deseja se (des)inscrever."
     );
     if (query.quit) return;
     let result = query.result;
     if (result !== undefined) {
       let newSub = !result.subscribed;
       await this.client.trello.subscribe.list(user.trelloToken, result.id, newSub);
-      message.channel.send(`You are ${newSub ? "now" : "no longer"} subcribed to list "${result.name}".`);
+      message.channel.send(`Você ${newSub ? "está" : "não está"} inscrito na lista "${result.name}".`);
     } else {
-      message.reply(`No list by the name of "${listName}" was found!`);
+      message.reply(`Nenhuma lista com o nome "${listName}" foi encontrada!`);
     }
   }
 
   get helpMeta() {
     return {
-      category: "User Management",
-      description: "(Un)subscribes to a list in the selected board.",
+      category: "Informações do Usuário",
+      description: "Se (des)increve de uma lista específica.",
       usage: ["<listName>"]
     };
   }

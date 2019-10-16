@@ -57,14 +57,13 @@ module.exports = class Faux extends Discord.Client {
 
     this.on("ready", () => {
       this.log(chalk.green("Logged in"));
-      this.user.setStatus('dnd')
       this.user.setActivity("Quadros mostrados no discord por mim | " + this.config.prefix + "help", { type: 3 });
     });
-    this.on("warn", s => this.warn("WARN", s));
-    this.on("error", s => this.error("ERROR", s));
-    this.on("disconnected", () => this.log("Disconnected"));
-    this.on("reconnecting", () => this.warn("Reconnecting"));
-    this.on("resume", r => this.warn(`Resumed. ${r} events were replayed.`));
+    this.on("warn", s => this.warn("AVISO", s));
+    this.on("error", s => this.error("ERRO", s));
+    this.on("disconnected", () => this.log("Disconectado"));
+    this.on("reconnecting", () => this.warn("Reconectando"));
+    this.on("resume", r => this.warn(`Resumido. ${r} eventos foram retomados.`));
     if (this.config.debug) this.on("debug", s => this.debug(s));
 
     process.once("uncaughtException", err => {
@@ -72,7 +71,7 @@ module.exports = class Faux extends Discord.Client {
       setTimeout(() => process.exit(0), 2500);
     });
 
-    this.log(chalk.green("Client initialized."));
+    this.log(chalk.green("Cliente inicializado."));
   }
 
   async serverCount() {
@@ -178,7 +177,7 @@ module.exports = class Faux extends Discord.Client {
       if (timeout >= 0) {
         timer = setTimeout(() => {
           delete _this.awaitedMessages[msg.channel.id][msg.author.id];
-          reject(new Error(`Request timed out (${timeout}ms)`));
+          reject(new Error(`Timeout da requisição (${timeout}ms)`));
         }, timeout);
       }
       if (this.awaitedMessages[msg.channel.id][msg.author.id]) {
@@ -192,7 +191,7 @@ module.exports = class Faux extends Discord.Client {
         },
         reject: function () {
           clearTimeout(timer);
-          reject(new Error("Request was overwritten"));
+          reject(new Error("A requisição foi sobreescrita"));
         },
         callback
       };
@@ -217,16 +216,16 @@ module.exports = class Faux extends Discord.Client {
   }
 
   prompt(cxtMessage, items, displayFunc = i => i,
-         promptText = "Type the number of the item you want to use.",
+         promptText = "Digite o número do item que você deseja usar.",
          itemsPerPage = 30,
          timeout = 30000) {
-    promptText += " Responding with anything else will cancel this prompt.";
+    promptText += " Responder a qualquer outra coisa cancelará este prompt.";
     return new Promise(async resolve => {
       let paginatable = this.canPaginate(cxtMessage);
       if (!items.length)
         return resolve(null);
       else if (items.length > itemsPerPage && !paginatable) {
-        await cxtMessage.channel.send(`More than ${itemsPerPage} items were in a prompt, please make your search more specific or give this bot \`Manage Messages\` and \`Add Reactions\` permissions.`);
+        await cxtMessage.channel.send(`Mais de ${itemsPerPage} itens estavam em uma pesquisa, por favor, torne sua pesquisa mais específica ou dê a este bot as permissões de \`Gerenciar Mensagens\` e \`Adicionar Reações\`.`);
         return resolve(null);
       }
       let pageVars = this.util.pageNumber(itemsPerPage, items.length),
@@ -241,9 +240,9 @@ module.exports = class Faux extends Discord.Client {
       let splitRows = this.util.splitArray(textTableRows, itemsPerPage);
       let makePage = () => {
         return CodeBlock.apply(
-          `[${items.length} Items, Page (${page}/${maxPages})]\n\n` +
+          `[${items.length} Itens, Página (${page}/${maxPages})]\n\n` +
           table(splitRows[page - 1], { hsep: ": " }) +
-          `\n\nc: Cancel Prompt`, "prolog");
+          `\n\nc: Cancelar Prompt`, "prolog");
       };
       let promptContent = promptText + "\n" + makePage();
       let promptFooter = "";
@@ -266,7 +265,7 @@ module.exports = class Faux extends Discord.Client {
           if (r.emoji.name === "🛑") {
             this.killPagination(cxtMessage);
             await promptMessage.delete();
-            await cxtMessage.channel.send("Prompt cancelled.");
+            await cxtMessage.channel.send("Prompt cancelado.");
             resolve(null);
             return;
           }
@@ -285,7 +284,7 @@ module.exports = class Faux extends Discord.Client {
         if (!includesOption || response.content == "c" || response.content == "-") {
           this.killPagination(cxtMessage);
           await promptMessage.delete();
-          await cxtMessage.channel.send("Prompt cancelled.");
+          await cxtMessage.channel.send("Prompt cancelado.");
           resolve(null);
         } else {
           await promptMessage.delete();
@@ -307,7 +306,7 @@ module.exports = class Faux extends Discord.Client {
                      content = "",
                      header = "",
                      footer = "",
-                     pluralName = "Items",
+                     pluralName = "Itens",
                      itemsPerPage = 30,
                      startPage = 1
                    }) {
@@ -318,11 +317,11 @@ module.exports = class Faux extends Discord.Client {
     let embed = {
       color: this.config.embedColor,
       author: {
-        name: `${pluralName} (${items.length}, Page ${page}/${maxPages})`,
+        name: `${pluralName} (${items.length}, Página ${page}/${maxPages})`,
         icon_url: this.config.icon_url
       },
       fields: [{
-        name: "List Prompt",
+        name: "Lista:",
         value: "[]"
       }]
     };
@@ -331,10 +330,10 @@ module.exports = class Faux extends Discord.Client {
     let splitRows = this.util.splitArray(items.map(i => displayFunc(i, false)), itemsPerPage);
     let splitEmbedRows = this.util.splitArray(items.map(i => displayFunc(i, true)), itemsPerPage);
     let makePage = () => {
-      embed.author.name = `${pluralName} (${items.length}, Page ${page}/${maxPages})`;
+      embed.author.name = `${pluralName} (${items.length}, Página ${page}/${maxPages})`;
       embed.fields[0].value = splitEmbedRows[page - 1].join("\n");
       return CodeBlock.apply(
-        `(•) ${pluralName} (${items.length}, Page (${page}/${maxPages})\n` +
+        `(•) ${pluralName} (${items.length}, Página (${page}/${maxPages})\n` +
         header + "\n\n" + splitRows[page - 1].join("\n") +
         footer, "prolog");
     };
@@ -402,7 +401,7 @@ module.exports = class Faux extends Discord.Client {
       },
       reject: function () {
         clearTimeout(timer);
-        cb("Pagination was stopped by another paging process!", null, () => _this.quitPagination(msg, botmsg));
+        cb("A paginação foi interrompida por outro processo de paginação!", null, () => _this.quitPagination(msg, botmsg));
       },
       stop: function () { clearTimeout(timer); },
       id: botmsg.id
@@ -413,7 +412,7 @@ module.exports = class Faux extends Discord.Client {
       await botmsg.react("▶");
     } catch (e) {
       console.log(e);
-      cb("I can't make reactions to the message!", null, () => this.quitPagination(msg, botmsg));
+      cb("Não posso reagir à mensagem!", null, () => this.quitPagination(msg, botmsg));
     }
   }
 
@@ -424,7 +423,7 @@ module.exports = class Faux extends Discord.Client {
         resolve();
       }).catch(() => {
         this.killPagination(msg);
-        reject("I can't clear reactions!");
+        reject("Não consigo limpar as reações!");
       });
     });
   }

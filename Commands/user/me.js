@@ -13,6 +13,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
+
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
@@ -45,7 +46,7 @@ module.exports = class Me extends Command {
       },
       fields: [{
         name: "Preferências",
-        value: `**Modo daltônico:** ${body.prefs.colorBlind ? "On" : "Off"}\n` +
+        value: `**Modo daltônico:** ${body.prefs.colorBlind ? "Ligado" : "Desligado"}\n` +
           `**Local:** ${body.prefs.locale}\n` +
           `**Enviar Resumos:** ${body.prefs.sendSummaries ? "Sim" : "Não"}`
       }]
@@ -69,7 +70,7 @@ module.exports = class Me extends Command {
         }
       });
     } else {
-      productsField.value = "*Nada*";
+      productsField.value = "*Nenhum*";
     }
     embed.fields.push(productsField);
     message.channel.send("", { embed });
@@ -77,7 +78,7 @@ module.exports = class Me extends Command {
 
   get helpMeta() {
     return {
-      category: "User Management",
+      category: "Informações do Usuário",
       description: "Verifica as informações da sua conta do trello."
     };
   }

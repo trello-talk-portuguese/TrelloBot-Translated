@@ -22,7 +22,7 @@ const { Command } = require("faux-classes");
 
 module.exports = class Help extends Command {
   get name() { return "help"; }
-  get aliases() { return ["❓", "❔", "?", "commands", "cmds"]; }
+  get aliases() { return ["❓", "❔", "?", "commands", "cmds", "comandos", "ajuda"]; }
   get cooldown() { return 0; }
   get permissions() { return ["embed"]; }
 

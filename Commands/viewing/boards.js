@@ -29,23 +29,23 @@ module.exports = class Boards extends Command {
   async exec(message, args, { user }) {
     let body = await this.client.trello.get.boards(user.trelloToken, user.trelloID);
     if (!body.boards.length)
-      return message.reply("Não foram encontrados quadros em que você gerencia. Você pode criar um quadro em https://trello.com/.");
+      return message.reply("Não foram encontrados quadros em que você faça parte. Você pode criar um quadro em https://trello.com/.");
     await this.client.promptList(message, body.boards, (board, embed) => {
       let emojis = (board.subscribed ? "🔔" : "") + (board.starred ? "⭐" : "") + (board.pinned ? "📌" : "");
       let current = board.shortLink === user.current;
       if (embed) {
         if (current)
-          return `\`${board.shortLink}\` ${emojis} [${board.name} **(Current)**](${board.shortUrl})`;
+          return `\`${board.shortLink}\` ${emojis} [${board.name} **(Atual)**](${board.shortUrl})`;
         else return `\`${board.shortLink}\` ${emojis} ${board.name}`;
       } else {
         if (current)
-          return `> ${board.shortLink}: ${board.name} (Current) ${emojis}`;
+          return `> ${board.shortLink}: ${board.name} (Atual) ${emojis}`;
         else return `${board.shortLink}: ${board.name} ${emojis}`;
       }
     }, {
       header: "Use `" + this.client.config.prefix + "switch <boardID>` para alternar entre os quadros.\n" +
         "Use `" + this.client.config.prefix + "boards [página]` parra ver a lista de quadros.",
-      pluralName: "Quadros do Trello",
+      pluralName: "Quadros no Trello",
       itemsPerPage: 15,
       startPage: args[0]
     });

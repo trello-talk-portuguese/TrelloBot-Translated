@@ -13,6 +13,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
+
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
@@ -35,13 +36,13 @@ module.exports = class Database extends EventEmitter {
   connect({ host = "localhost", port, password }) {
     return new Promise((resolve, reject) => {
       this.redis = redis.createClient({ host, port, password });
-      this.client.log(this.logPrefix, chalk.green("Connected"));
+      this.client.log(this.logPrefix, chalk.green("Conectado!"));
       this.redis.on("error", this.onError.bind(this));
       this.redis.on("warning", w => this.client.warn(this.logPrefix, w));
       this.redis.on("end", w => this.onClose.bind(this));
-      this.redis.on("reconnecting", w => this.client.log(this.logPrefix, chalk.yellow("Reconnecting")));
-      this.redis.on("ready", w => this.client.log(this.logPrefix, chalk.green("Ready.")));
-      this.redis.on("connect", w => this.client.log(this.logPrefix, chalk.green("Redis connection has started.")));
+      this.redis.on("reconnecting", w => this.client.log(this.logPrefix, chalk.yellow("Reconectando...")));
+      this.redis.on("ready", w => this.client.log(this.logPrefix, chalk.green("Pronto.")));
+      this.redis.on("connect", w => this.client.log(this.logPrefix, chalk.green("Conexão com o redis completa!")));
       this.host = host;
       this.port = port;
       this.password = password;
@@ -118,18 +119,18 @@ module.exports = class Database extends EventEmitter {
   }
 
   async reconnect() {
-    this.client.log("[DB]", "Attempting reconnection");
+    this.client.log("[DB]", "Tentando Reconectar");
     this.conn = await this.connect(this);
-    this.client.log("[DB]", "Reconnected");
+    this.client.log("[DB]", "Reconectado");
   }
 
   onError(err) {
-    this.client.log("[DB]", "Error", err);
+    this.client.log("[DB]", "Erro", err);
     this.emit("error", err);
   }
 
   async onClose() {
-    this.client.log("[DB]", "Closed");
+    this.client.log("[DB]", "Fechado");
     this.emit("close");
     await this.reconnect();
   }

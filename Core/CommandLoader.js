@@ -13,6 +13,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
+
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
@@ -50,7 +51,7 @@ module.exports = class CommandLoader {
   }
 
   load(path) {
-    if (this.debug) this.client.log("Loading command", path);
+    if (this.debug) this.client.log("Comando Carregado", path);
     delete require.cache[require.resolve(path)];
     let cls = require(path);
     let cmd = new cls(this.client);

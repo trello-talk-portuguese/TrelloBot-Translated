@@ -13,6 +13,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
+
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
@@ -36,27 +37,27 @@ module.exports = class RethinkDB extends EventEmitter {
   async connect({ host = "localhost", port, user, password, database }) {
     let conn = this.conn = await rethinkdb.connect({ host, port, user, password });
     if (database) conn.use(database);
-    this.client.log(this.logPrefix, chalk.green("Recieved Connection"));
+    this.client.log(this.logPrefix, chalk.green("Conexão Recebida"));
     conn.on("error", this.onError.bind(this));
     conn.on("close", w => this.onClose.bind(this));
-    conn.on("connect", w => this.client.log(this.logPrefix, chalk.green("Connection has started.")));
+    conn.on("connect", w => this.client.log(this.logPrefix, chalk.green("Conexão Iniciada.")));
     conn.on("timeout", w => this.client.log(this.logPrefix, chalk.green("Socket timeout.")));
     this.host = host;
     this.port = port;
   }
 
   async reconnect() {
-    this.client.log(this.logPrefix, "Attempting reconnection");
+    this.client.log(this.logPrefix, "Tentando Reconectar");
     await this.conn.reconnect(this);
   }
 
   onError(err) {
-    this.client.log(this.logPrefix, "Error", err);
+    this.client.log(this.logPrefix, "Erro", err);
     this.emit("error", err);
   }
 
   async onClose() {
-    this.client.log(this.logPrefix, "Closed");
+    this.client.log(this.logPrefix, "Fechado");
     this.emit("close");
     if (this.reconnect) await this.reconnect();
   }

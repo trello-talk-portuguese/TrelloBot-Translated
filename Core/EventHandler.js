@@ -65,7 +65,7 @@ module.exports = class EventHandler {
         if (args.length < command.argRequirement) return Message.reply(`Você precisa completar o comando!\nUse: \`${usage.reduce((acc, x, i) => `${acc}${i > 0 ? "` ou `" : ""}${prefix}${cname} ${x}`, "")}\``);
         if (command.permissions.includes("attach") && !this.client.attach(Message)) return Message.reply("Eu preciso da permissão de `Anexar Arquivos` para usar esse comando!");
         if (command.permissions.includes("embed") && !this.client.embed(Message)) return Message.reply("Eu preciso da permissão `Embed Links` para usar esse comando!");
-        if (command.permissions.includes("elevated") && !this.client.elevated(Message)) return Message.reply("Apenas usuários com cargo superior ao meu podem usar este comando!");
+        if (command.permissions.includes("elevated") && !this.client.elevated(Message)) return Message.reply("Apenas usuários especificados em minhas configurações podem usar este comando!");
         if (command.permissions.includes("trello-perm") && !this.client.util.checkPerm(Message.author, Message.channel.guild)) return Message.reply("Para esse comando você precisa ser o dono do server ou usar o cargo com nome de `Trello`!");
         if (command.permissions.includes("auth") && user === null) return Message.reply(`Você não sincronizou sua conta do discord com o trello! Por favor, sincronize aqui: ${this.client.config.authURL}`);
         if (command.permissions.includes("board") && (user === null || user.current === null)) return Message.reply(`Nenhum quadro selecionado. Use \`${this.client.config.prefix}switch\` para selecionar.`);
