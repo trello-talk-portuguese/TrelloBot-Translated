@@ -13,6 +13,7 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
+
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
@@ -29,10 +30,10 @@ const manager = new Discord.ShardingManager(`${__dirname}/${pkg.main}`, {
 
 const logPrefix = `${chalk.gray("[")}${chalk.yellow("SHARD MASTER")}${chalk.gray("]")}`;
 
-manager.on("launch", shard => console.log(`${logPrefix} ${shard.id} (${shard.id + 1}/${manager.totalShards}) launched`));
-process.on("exit", code => console.log(`${logPrefix} ${chalk.red("Process is forcing a shut down!")} Exit code:`, code));
+manager.on("launch", shard => console.log(`${logPrefix} ${shard.id} (${shard.id + 1}/${manager.totalShards}) iniciado(s)`));
+process.on("exit", code => console.log(`${logPrefix} ${chalk.red("Foi forçado o encerramento de um processo.")} Exit code:`, code));
 
-console.log(`${logPrefix} Starting to spawn shards...`);
+console.log(`${logPrefix} Começando a gerar shards...`);
 manager.spawn(config.sharding.totalShards, config.sharding.delay).then(() => {
-  console.log(`${logPrefix} ${chalk.green("Finished launching shards!")}`);
+  console.log(`${logPrefix} ${chalk.green("Finalizando a geração dos Shards!")}`);
 });
