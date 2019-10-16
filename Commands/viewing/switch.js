@@ -34,7 +34,7 @@ module.exports = class Switch extends Command {
     } else {
       await this.client.data.set.user(message.author.id, { current: args[0] });
       let board = boards.boards.filter(b => b.shortLink === args[0]);
-      message.channel.send(`Alterne entre os quadros usando "${board[0].name}" \`(${args[0]})\``);
+      message.channel.send(`Quadro "${board[0].name}" \`(${args[0]})\` foi selecionado com sucesso.`);
     }
   }
 
