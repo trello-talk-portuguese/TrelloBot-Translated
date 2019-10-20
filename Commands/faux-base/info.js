@@ -38,7 +38,7 @@ module.exports = class Info extends Command {
     let embed = {
       color: this.client.config.embedColor,
       title: `Informações sobre ${this.client.user.username}.`,
-      description: "Este bot está usando usa [Faux](https://github.com/Snazzah/Faux)\n\n"
+      description: "Este bot está usando [Faux](https://github.com/Snazzah/Faux)\n\n"
         + `**:computer: Versão do ${this.client.user.username}** ${this.client.pkg.version}\n`
         + `**:computer: Versão do Faux** ${this.client.FAUX_VER}\n`
         + `**:clock: Uptime**: ${process.uptime() ? process.uptime().toString().toHHMMSS() : "???"}\n`

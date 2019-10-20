@@ -44,7 +44,7 @@ module.exports = class ShardInfo extends Command {
       s[4] = s[4].toFixed(2) + " MB";
       return s;
     });
-    tableValues.unshift(["ID", "USERS", "CHANNELS", "GUILDS", "MEM", "UPTIME"]);
+    tableValues.unshift(["ID", "USUÁRIOS", "CANAIS", "SERVERS", "MEM", "UPTIME"]);
     tableValues.push([
       "TOTAL",
       sharddata.reduce((prev, val) => prev + val[1], 0),

@@ -56,8 +56,8 @@ module.exports = class Faux extends Discord.Client {
     this.pageProcesses = {};
 
     this.on("ready", () => {
-      this.log(chalk.green("Logged in"));
-      this.user.setActivity("Quadros mostrados no discord por mim | " + this.config.prefix + "help", { type: 3 });
+      this.log(chalk.green("Conectado!"));
+      this.user.setActivity("Quadros mostrados por mim | " + this.config.prefix + "help", { type: 3 });
     });
     this.on("warn", s => this.warn("AVISO", s));
     this.on("error", s => this.error("ERRO", s));
