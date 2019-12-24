@@ -9,7 +9,7 @@
 ## Introdução
 
 
-O trello bot agora está em português! [[Convite](https://discordapp.com/oauth2/authorize?client_id=631903417471598602&scope=bot&permissions=1074121792)] [[Servidor de Suporte](https://trellobot.xyz/server)]
+O trello bot agora está em português! [[Convite](https://pt-br.trellobot.xyz/bot)] [[Servidor de Suporte](https://pt-br.trellobot.xyz/server)]
 
 - Gerencie seus quadros do Trello, consulte atividades do quadro, gerencie seus webhooks, use vários quadros por servidor e muito mais!
 - Autenticação simples na Web para começar o mais rápido possível!
