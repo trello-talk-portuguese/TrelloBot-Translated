@@ -27,14 +27,14 @@ module.exports = class Restart extends Command {
   get listed() { return false; }
 
   async exec(message, args) {
-    await message.channel.send(`Restarting shard.`);
+    await message.channel.send(`Reiniciando o shard.`);
     process.exit(0);
   }
 
   get helpMeta() {
     return {
       category: "Admin",
-      description: "Restarts the current shard."
+      description: "Reinicia o shard atual."
     };
   }
 };

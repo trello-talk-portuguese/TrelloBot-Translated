@@ -27,7 +27,7 @@ module.exports = class Reload extends Command {
   get listed() { return false; }
 
   exec(message, args) {
-    message.channel.send("Reloading commands...");
+    message.channel.send("Recarregando comandos...");
     this.client.cmds.reload();
     this.client.cmds.preloadAll();
   }
@@ -35,7 +35,7 @@ module.exports = class Reload extends Command {
   get helpMeta() {
     return {
       category: "Admin",
-      description: "Reloads commands"
+      description: "Recarrega os comandos."
     };
   }
 };

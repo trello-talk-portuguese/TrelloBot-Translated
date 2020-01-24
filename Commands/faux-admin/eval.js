@@ -36,7 +36,7 @@ module.exports = class Eval extends Command {
       let response = eval(args.join(" "));
       let msg = CodeBlock.apply(response, "js");
       let time = new Date().getTime() - start;
-      Message.channel.send(`Time taken: ${(time / 1000)} seconds\n${msg}`);
+      Message.channel.send(`Tempo Levado: ${(time / 1000)} segundos\n${msg}`);
     } catch (e) {
       Message.channel.send(CodeBlock.apply(e.stack, "js"));
     }
@@ -45,7 +45,7 @@ module.exports = class Eval extends Command {
   get helpMeta() {
     return {
       category: "Admin",
-      description: "eval hell yeah"
+      description: "eval oh yeah"
     };
   }
 };

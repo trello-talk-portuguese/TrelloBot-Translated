@@ -41,7 +41,7 @@ module.exports = class Exec extends Command {
     } finally {
       message.channel.stopTyping(true);
       const text = `${errMessage}\n${CodeBlock.apply(output)}`;
-      if (text.length > 2000) return message.channel.send("Output was too long to be displayed!");
+      if (text.length > 2000) return message.channel.send("A saída é muito longa para ser exibida!");
       return message.channel.send(text);
     }
   }
@@ -50,7 +50,7 @@ module.exports = class Exec extends Command {
     return {
       category: "Admin",
       usage: ["<command>"],
-      description: "Utilize child_process.exec"
+      description: "Utilize child_process.exec."
     };
   }
 };

@@ -26,16 +26,16 @@ module.exports = class ReloadAll extends Command {
   get listed() { return false; }
 
   async exec(message, args) {
-    if (!this.client.isSharded()) return message.reply("The bot is not sharded.");
-    let m = await message.channel.send(`Reloading commands in all shards.`);
+    if (!this.client.isSharded()) return message.reply("O bot não está em um shard.");
+    let m = await message.channel.send(`Recarregando comandos em todos os shards.`);
     await this.client.shard.broadcastEval("this.cmds.reload(); this.cmds.preloadAll();");
-    m.edit(`Reloaded commands in all shards.`);
+    m.edit(`Comandos recarregados em todos os shards.`);
   }
 
   get helpMeta() {
     return {
       category: "Admin",
-      description: "Reloads commands in all shards"
+      description: "Recarrega os comandos em todos os shards."
     };
   }
 };

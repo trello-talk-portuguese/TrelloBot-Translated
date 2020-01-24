@@ -1,7 +1,7 @@
 /*
  This file is part of TrelloBot.
 
- Copyright © Snazzah ??? - 2019
+ Copyright © Snazzah 2016 - 2019
  Copyright © Yamboy1 (and contributors) 2019
  Copyright © Lobo Metalurgico 2019
 
@@ -36,7 +36,7 @@ module.exports = class AsyncEval extends Command {
       let response = await eval(`(async () => \{${args.join(" ")}\})()`);
       let msg = CodeBlock.apply(response, "js");
       let time = new Date().getTime() - start;
-      Message.channel.send(`Time taken: ${(time / 1000)} seconds\n${msg}`);
+      Message.channel.send(`Tempo Levado: ${(time / 1000)} segundos\n${msg}`);
     } catch (e) {
       Message.channel.send(CodeBlock.apply(e.stack, "js"));
     }
@@ -45,7 +45,7 @@ module.exports = class AsyncEval extends Command {
   get helpMeta() {
     return {
       category: "Admin",
-      description: "eval hell yeah\n\nNOTE: Due to the added async IIFE wrapper in this command, it is necessary to use the return statment to return a result\ne.g. `T!aevil return 1`"
+      description: "eval oh yeah\n\nNOTA: Devido ao async IIFE adicionado neste comando, é necessário usar o termo return para obter algum resultado.\nEx. `C!aeval return 1`"
     };
   }
 };

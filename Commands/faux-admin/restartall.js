@@ -27,15 +27,15 @@ module.exports = class RestartAll extends Command {
   get listed() { return false; }
 
   async exec(message, args) {
-    if (!this.client.isSharded()) return message.reply("The bot is not sharded.");
-    await message.channel.send(`Restarting all shards.`);
+    if (!this.client.isSharded()) return message.reply("O bot não está em um shard.");
+    await message.channel.send(`Reiniciando todos os shards.`);
     this.client.shard.broadcastEval("process.exit(0)");
   }
 
   get helpMeta() {
     return {
       category: "Admin",
-      description: "Restarts the all shards."
+      description: "Reinicia todos os shards."
     };
   }
 };
