@@ -1,9 +1,9 @@
 /*
  This file is part of TrelloBot.
 
- Copyright © Snazzah ??? - 2019
- Copyright © Yamboy1 (and contributors) 2019
- Copyright © Lobo Metalurgico 2019
+ Copyright © Snazzah 2016 - 2019
+ Copyright © Yamboy1 (and contributors) 2019 - 2020
+ Copyright © Lobo Metalurgico 2019 - 2020
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
